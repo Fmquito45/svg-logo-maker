@@ -27,11 +27,19 @@ const questions = [
     }
 ]
 
+function svgLogo(responses){
+    var userSvg = new Svg();
+    userSvg.structureText(userText, userTextColor);
+    userSvg.strcutureShape(userShape);
+    builtSvg = svgLogo.renderSvg();
+};
+
 function init() {
     inquirer
         .prompt(questions)
         .then((responses) => {
-            console.log(responses)
+            console.log(responses);
+            svgLogo(responses)
         })
 }
 // userText = text
