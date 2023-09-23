@@ -28,6 +28,7 @@ const questions = [
 ]
 
 function svgLogo(responses){
+    var builtSvg = '';
     var userSvg = new Svg();
     userSvg.structureText(userText, userTextColor);
     userSvg.strcutureShape(userShape);
@@ -38,8 +39,13 @@ function init() {
     inquirer
         .prompt(questions)
         .then((responses) => {
+            var userText = '';
+            if (responses.text.length > 0 && responses.text.length < 4){
+                userText = responses.text;
+            };
+            console.log(userText);
             console.log(responses);
-            svgLogo(responses)
+ //           svgLogo(responses);
         })
 }
 // userText = text
