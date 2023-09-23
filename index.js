@@ -1,6 +1,7 @@
 const fs = require('fs')
 const inquirer = require('inquirer')
 const {Circle, Square, Triangle} = require('./lib/shapes')
+const Svg = require('./lib/svg')
 
 const questions = [
     {
@@ -33,5 +34,8 @@ function init() {
             console.log(responses)
         })
 }
+// userText = text
+//userTextColor= color
+//userShape = shape ( color and shape)
 
 init();
