@@ -28,14 +28,12 @@ const questions = [
 ]
 
 function svgLogo(text, textColor, shape){
-    console.log('we here we live')
     var builtSvg = '';
     var userSvg = new Svg();
     userSvg.structureText(text, textColor);
     userSvg.structureShape(shape);
     builtSvg = userSvg.renderSvg();
     return builtSvg ;
-    
 };
 
 function writeToFile(fileName, data){
@@ -60,54 +58,44 @@ function init() {
                 console.log ("Enter valid 3 characters lenght");
                 return; 
             }
-            console.log(userText);
+//            console.log(userText);
             
             var userTextColor = '';
             if (responses.textColor){
                 userTextColor = responses.textColor
             };
-            console.log(userTextColor);
+//            console.log(userTextColor);
 
             var userShape = '';
             if (responses.shape){
                 userShape = responses.shape
             };
-            console.log(userShape);
+//            console.log(userShape);
 
             var userShapeColor = '';
             if (responses.shapeColor){
                 userShapeColor = responses.shapeColor
             };
-            console.log(userShapeColor);
+//            console.log(userShapeColor);
 
             let shape = '';
-            let builtSvg = '';
-            
             if (userShape === "Circle"){
-                console.log(userShape);
+//                console.log(userShape);
                 shape = new Circle();
- //               shape.assignColor(userShapeColor);
-//                builtSvg = svgLogo(userText, userTextColor, shape);
             } else if (userShape === "Square"){
                 console.log(userShape);
                 shape = new Square();
-//                shape.assignColor(userShapeColor);
-//                builtSvg = svgLogo(userText, userTextColor, shape);
             } else {
                 shape = new Triangle();
- //               shape.assignColor(userShapeColor);
- //               builtSvg = svgLogo(userText, userTextColor, shape);
             };
-            
-            
             shape.assignColor(userShapeColor);
-            builtSvg = svgLogo(userText, userTextColor, shape);
 
+            let builtSvg = '';
+            builtSvg = svgLogo(userText, userTextColor, shape);
             console.log(builtSvg);
 
             writeToFile('logo.svg', builtSvg);
-
-        })
+        });
 };
 
 init();
