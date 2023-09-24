@@ -33,7 +33,7 @@ function svgLogo(text, textColor, shape){
     var userSvg = new Svg();
     userSvg.structureText(text, textColor);
     userSvg.structureShape(shape);
-    builtSvg = svgLogo.renderSvg();
+    builtSvg = userSvg.renderSvg();
     return builtSvg ;
     
 };
