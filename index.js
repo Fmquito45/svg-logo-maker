@@ -45,11 +45,21 @@ function init() {
                 userText = responses.text;
             };
             console.log(userText);
+            
             var userTextColor = '';
             if (responses.textColor){
                 userTextColor = responses.textColor
             };
             console.log(userTextColor);
+
+            var userShape = '';
+            if (responses.shape){
+                userShape = responses.shape
+            };
+            console.log(userShape);
+
+      //      var userShape = '';
+       //     if ()
 
             
  //           svgLogo(responses);
