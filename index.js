@@ -38,6 +38,16 @@ function svgLogo(text, textColor, shape){
     
 };
 
+function writeToFile(fileName, data){
+    fs.writeFile(fileName, data, (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Svg Logo successfully generated');
+        };
+    });
+};
+
 function init() {
     inquirer
         .prompt(questions)
@@ -76,22 +86,26 @@ function init() {
             if (userShape === "Circle"){
                 console.log(userShape);
                 shape = new Circle();
-                shape.assignColor(userShapeColor);
-                builtSvg = svgLogo(userText, userTextColor, shape);
-            } else if ( userShape === "Square"){
+ //               shape.assignColor(userShapeColor);
+//                builtSvg = svgLogo(userText, userTextColor, shape);
+            } else if (userShape === "Square"){
                 console.log(userShape);
                 shape = new Square();
-                shape.assignColor(userShapeColor);
-                builtSvg = svgLogo(userText, userTextColor, shape);
-            } else if (userShape === "Trianlge"){
-                console.log(userShape);
+//                shape.assignColor(userShapeColor);
+//                builtSvg = svgLogo(userText, userTextColor, shape);
+            } else {
                 shape = new Triangle();
-                shape.assignColor(userShapeColor);
-                builtSvg = svgLogo(userText, userTextColor, shape);
+ //               shape.assignColor(userShapeColor);
+ //               builtSvg = svgLogo(userText, userTextColor, shape);
             };
             
-            console.log( " confirm shape" + shape);
+            
+            shape.assignColor(userShapeColor);
+            builtSvg = svgLogo(userText, userTextColor, shape);
+
             console.log(builtSvg);
+
+            writeToFile('logo.svg', builtSvg);
 
         })
 };
