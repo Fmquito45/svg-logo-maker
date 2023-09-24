@@ -43,7 +43,10 @@ function init() {
             var userText = '';
             if (responses.text.length > 0 && responses.text.length < 4){
                 userText = responses.text;
-            };
+            } else {
+                console.log ("Enter valid 3 characters lenght");
+                return; 
+            }
             console.log(userText);
             
             var userTextColor = '';
@@ -58,8 +61,22 @@ function init() {
             };
             console.log(userShape);
 
-      //      var userShape = '';
-       //     if ()
+            let shape = '';
+            if (userShape === "Circle"){
+                shape = new Circle();
+            } else if ( userShape === "Square"){
+                shape = new Square();
+            } else if (userShape === "Trianlge"){
+                shape = new Triangle();
+            };
+            
+            var userShapeColor = '';
+            if (responses.shapeColor){
+                userShapeColor = responses.shapeColor
+            };
+            console.log(userShapeColor);
+
+            console.log( " confirm shape" + shape);
 
             
  //           svgLogo(responses);
