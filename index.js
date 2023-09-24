@@ -12,7 +12,7 @@ const questions = [
     {
         type: "input",
         name: "textColor",
-        message: "Enter a color keyword (OR a hexadecimal number)\n"
+        message: "Enter a color keyword (OR a hexadecimal number) for text\n"
     },
     {
         type: "list",
@@ -23,7 +23,7 @@ const questions = [
     {
         type: "input",
         name: "shapeColor",
-        message: "Enter a color keyword (OR a hexadecimal number)\n"
+        message: "Enter a color keyword (OR a hexadecimal number) for shape\n"
     }
 ]
 
@@ -39,12 +39,19 @@ function init() {
     inquirer
         .prompt(questions)
         .then((responses) => {
+            console.log(responses);
             var userText = '';
             if (responses.text.length > 0 && responses.text.length < 4){
                 userText = responses.text;
             };
             console.log(userText);
-            console.log(responses);
+            var userTextColor = '';
+            if (responses.textColor){
+                userTextColor = responses.textColor
+            };
+            console.log(userTextColor);
+
+            
  //           svgLogo(responses);
         })
 }
