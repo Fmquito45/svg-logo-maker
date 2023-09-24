@@ -55,7 +55,7 @@ function init() {
             console.log(responses);
             var userText = '';
             if (responses.text.length > 0 && responses.text.length < 4){
-                userText = responses.text;
+                userText = responses.text.toUpperCase();
             } else {
                 console.log ("Enter valid 3 characters lenght");
                 return; 
