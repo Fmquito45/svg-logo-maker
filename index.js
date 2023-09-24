@@ -18,7 +18,7 @@ const questions = [
         type: "list",
         name: "shape",
         message: "Choose shape from list\n",
-        choices: ['Ciricle', 'Square', 'Triangle']
+        choices: ['Circle', 'Square', 'Triangle']
     },
     {
         type: "input",
@@ -27,12 +27,15 @@ const questions = [
     }
 ]
 
-function svgLogo(responses){
+function svgLogo(text, textColor, shape){
+    console.log('we here we live')
     var builtSvg = '';
     var userSvg = new Svg();
-    userSvg.structureText(userText, userTextColor);
-    userSvg.strcutureShape(userShape);
-    builtSvg = svgLogo.renderSvg(responses);
+    userSvg.structureText(text, textColor);
+    userSvg.structureShape(shape);
+    builtSvg = svgLogo.renderSvg();
+    return builtSvg ;
+    
 };
 
 function init() {
@@ -61,29 +64,36 @@ function init() {
             };
             console.log(userShape);
 
-            let shape = '';
-            if (userShape === "Circle"){
-                shape = new Circle();
-            } else if ( userShape === "Square"){
-                shape = new Square();
-            } else if (userShape === "Trianlge"){
-                shape = new Triangle();
-            };
-            
             var userShapeColor = '';
             if (responses.shapeColor){
                 userShapeColor = responses.shapeColor
             };
             console.log(userShapeColor);
 
-            console.log( " confirm shape" + shape);
-
+            let shape = '';
+            let builtSvg = '';
             
- //           svgLogo(responses);
+            if (userShape === "Circle"){
+                console.log(userShape);
+                shape = new Circle();
+                shape.assignColor(userShapeColor);
+                builtSvg = svgLogo(userText, userTextColor, shape);
+            } else if ( userShape === "Square"){
+                console.log(userShape);
+                shape = new Square();
+                shape.assignColor(userShapeColor);
+                builtSvg = svgLogo(userText, userTextColor, shape);
+            } else if (userShape === "Trianlge"){
+                console.log(userShape);
+                shape = new Triangle();
+                shape.assignColor(userShapeColor);
+                builtSvg = svgLogo(userText, userTextColor, shape);
+            };
+            
+            console.log( " confirm shape" + shape);
+            console.log(builtSvg);
+
         })
-}
-// userText = text
-//userTextColor= color
-//userShape = shape ( color and shape)
+};
 
 init();
