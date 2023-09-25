@@ -2,7 +2,9 @@ const fs = require('fs')
 const inquirer = require('inquirer')
 const {Circle, Square, Triangle} = require('./lib/shapes')
 const Svg = require('./lib/svg')
+//import needed modules for dependencies
 
+//questions to be prompted to user
 const questions = [
     {
         type: "input",
@@ -26,7 +28,7 @@ const questions = [
         message: "Enter a color keyword (OR a hexadecimal number) for shape\n"
     }
 ]
-
+//function to create and render svg data string
 function svgLogo(text, textColor, shape){
     var builtSvg = '';
     var userSvg = new Svg();
@@ -35,7 +37,7 @@ function svgLogo(text, textColor, shape){
     builtSvg = userSvg.renderSvg();
     return builtSvg ;
 };
-
+// function to generate file and input svg data
 function writeToFile(fileName, data){
     fs.writeFile(fileName, data, (err) => {
         if (err) {
@@ -45,7 +47,7 @@ function writeToFile(fileName, data){
         };
     });
 };
-
+// function to initialize prompt questions, svg data string, and write to file.
 function init() {
     inquirer
         .prompt(questions)
@@ -59,7 +61,7 @@ function init() {
                 return; 
             }
 //            console.log(userText);
-            
+
             var userTextColor = '';
             if (responses.textColor){
                 userTextColor = responses.textColor
@@ -83,7 +85,7 @@ function init() {
 //                console.log(userShape);
                 shape = new Circle();
             } else if (userShape === "Square"){
-                console.log(userShape);
+//                console.log(userShape);
                 shape = new Square();
             } else {
                 shape = new Triangle();
@@ -91,9 +93,10 @@ function init() {
             shape.assignColor(userShapeColor);
 
             let builtSvg = '';
+            // invoke svgLogo with available data 
             builtSvg = svgLogo(userText, userTextColor, shape);
             console.log(builtSvg);
-
+            // invoke writeToFile with available data
             writeToFile('logo.svg', builtSvg);
         });
 };
