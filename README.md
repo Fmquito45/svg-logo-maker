@@ -27,6 +27,8 @@
   ![alt text](./assets/images/Screenshot%202023-09-25%20at%206.44.14%20PM.png)
   ![alt text](./assets/images/Screenshot%202023-09-25%20at%206.44.36%20PM.png)
 
+  Screen Recording Link: https://drive.google.com/file/d/13EFkL-ejJw_evn2-Y2S-tQ_FkPkJapRB/view
+
   
   ## License
     MIT License
